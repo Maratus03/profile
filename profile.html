@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Rivera - Personal Portfolio</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                        },
+                        accent: '#6366f1',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        /* Glassmorphism effects */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-300 relative selection:bg-sky-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass border-b border-slate-200/50 dark:border-slate-800/50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo / Name -->
+                <a href="#home" class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-sky-500 to-indigo-600 bg-clip-text text-transparent">
+                    Maratus S<span class="text-sky-500"></span>
+                </a>
+
+                <!-- Desktop Nav Items -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <a href="#home" class="nav-link px-3 py-2 rounded-lg text-sm font-medium hover:text-sky-500 transition-colors">Beranda</a>
+                    <a href="#about" class="nav-link px-3 py-2 rounded-lg text-sm font-medium hover:text-sky-500 transition-colors">Tentang Saya</a>
+                    <a href="#skills" class="nav-link px-3 py-2 rounded-lg text-sm font-medium hover:text-sky-500 transition-colors">Keahlian</a>
+                    <a href="#portfolio" class="nav-link px-3 py-2 rounded-lg text-sm font-medium hover:text-sky-500 transition-colors">Portofolio</a>
+                    <a href="#experience" class="nav-link px-3 py-2 rounded-lg text-sm font-medium hover:text-sky-500 transition-colors">Pengalaman</a>
+                    <a href="#contact" class="nav-link px-3 py-2 rounded-lg text-sm font-medium hover:text-sky-500 transition-colors">Kontak</a>
+                </nav>
+
+                <!-- Action Controls (Theme Toggle & Mobile Menu Button) -->
+                <div class="flex items-center space-x-3">
+                    <button id="theme-toggle" aria-label="Toggle Theme" class="p-2.5 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors focus:outline-none">
+                        <i class="fas me-0 text-lg hidden dark:block fa-sun text-amber-400"></i>
+                        <i class="fas me-0 text-lg block dark:hidden fa-moon text-slate-700"></i>
+                    </button>
+
+                    <button id="mobile-menu-btn" aria-label="Toggle Menu" class="md:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
+                        <i class="fas fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-b border-slate-200 dark:border-slate-800 px-4 pt-2 pb-4 space-y-2">
+            <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-500">Beranda</a>
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-500">Tentang Saya</a>
+            <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-500">Keahlian</a>
+            <a href="#portfolio" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-500">Portofolio</a>
+            <a href="#experience" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-500">Pengalaman</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium hover:bg-sky-50 dark:hover:bg-slate-800 hover:text-sky-500">Kontak</a>
+        </div>
+    </header>
+
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-[calc(100vh-4rem)] flex items-center justify-center relative overflow-hidden py-12 lg:py-0">
+            <!-- Background Decorative Blobs -->
+            <div class="absolute top-1/4 left-10 w-72 h-72 bg-sky-400/20 dark:bg-sky-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute bottom-1/4 right-10 w-80 h-80 bg-indigo-400/20 dark:bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Text Info -->
+                    <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-sky-100 dark:bg-sky-950/80 text-sky-600 dark:text-sky-300 text-xs sm:text-sm font-semibold">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                            <span id="dynamic-greeting">Selamat Datang!</span>
+                        </div>
+
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                            Halo, Saya <span class="bg-gradient-to-r from-sky-500 to-indigo-600 bg-clip-text text-transparent">Maratus S</span>
+                        </h1>
+
+                        <p class="text-xl sm:text-2xl font-medium text-slate-600 dark:text-slate-300">
+                            Full Stack Web Developer & UI/UX Designer
+                        </p>
+
+                        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto lg:mx-0 text-base leading-relaxed">
+                            Membangun aplikasi web modern, cepat, dan responsif dengan pengalaman pengguna yang luar biasa. Berfokus pada arsitektur bersih dan desain antarmuka intuitif.
+                        </p>
+
+                        <!-- CTA Buttons -->
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#contact" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-semibold shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 transition-all duration-300 flex items-center space-x-2">
+                                <span>Hubungi Saya</span>
+                                <i class="fas fa-arrow-right text-sm"></i>
+                            </a>
+                            <button id="resume-btn" class="px-6 py-3.5 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 font-semibold transition-all duration-300 flex items-center space-x-2">
+                                <i class="fas fa-download text-sm"></i>
+                                <span>Unduh CV</span>
+                            </button>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="pt-4 flex items-center justify-center lg:justify-start space-x-4">
+                            <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Sosial:</span>
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-700 transition-all">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-700 transition-all">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-700 transition-all">
+                                <i class="fab fa-x-twitter text-xl"></i>
+                            </a>
+                            <a href="mailto:alex.rivera@example.com" class="p-2.5 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-sky-400 hover:bg-sky-50 dark:hover:bg-slate-700 transition-all">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Profile Image / Avatar Container -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="relative group">
+                            <!-- Outer glow ring -->
+                            <div class="absolute -inset-1 bg-gradient-to-r from-sky-500 to-indigo-600 rounded-3xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                            
+                            <div class="relative rounded-3xl overflow-hidden bg-slate-900 border-2 border-white/20 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Alex Rivera Profile" 
+                                     class="w-full h-full object-cover object-center transform transition-transform duration-500 group-hover:scale-105"
+                                     onerror="this.src='https://placehold.co/400x400/0284c7/ffffff?text=Alex+Rivera'">
+                            </div>
+
+                            <!-- Floating Badge -->
+                            <div class="absolute -bottom-4 -left-4 glass px-4 py-3 rounded-2xl border border-slate-200/50 dark:border-slate-700/50 shadow-xl flex items-center space-x-3">
+                                <div class="p-2 bg-emerald-500/10 text-emerald-500 rounded-lg">
+                                    <i class="fas fa-code text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Pengalaman</p>
+                                    <p class="text-sm font-bold text-slate-800 dark:text-white">5+ Tahun</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20 bg-white dark:bg-slate-800/50 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Title -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold text-sky-500 uppercase tracking-widest mb-2">Tentang Saya</h2>
+                    <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Mengubah Ide Menjadi Solusi Digital</p>
+                    <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <!-- Bio Text -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <h3 class="text-2xl font-bold text-slate-800 dark:text-slate-100">
+                            Saya Maratus S, seorang Software Engineer yang berdomisili di Karanggupito.
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Sejak memulai perjalanan saya dalam pengembangan perangkat lunak 5 tahun yang lalu, saya telah bekerja dengan berbagai klien dan startup untuk membangun aplikasi web berskala tinggi, intuitif, dan responsif.
+                        </p>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Filosofi kerja saya didasari oleh prinsip kesederhanaan, performa maksimal, serta pengalaman pengguna yang menyenangkan. Saya selalu bersemangat mempelajari teknologi baru dan menyelesaikan tantangan kompleks.
+                        </p>
+
+                        <!-- Key Principles Grid -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-start space-x-3">
+                                <i class="fas fa-bolt text-sky-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 dark:text-white">Performa Tinggi</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Optimasi kode untuk waktu muat cepat.</p>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 flex items-start space-x-3">
+                                <i class="fas fa-mobile-screen text-indigo-500 text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-slate-900 dark:text-white">Responsif First</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Tampilan sempurna di semua ukuran layar.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Grid -->
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-6">
+                        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 text-center hover:border-sky-500 transition-colors">
+                            <p class="text-4xl font-extrabold text-sky-500 mb-1">5+</p>
+                            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">Tahun Pengalaman</p>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 text-center hover:border-sky-500 transition-colors">
+                            <p class="text-4xl font-extrabold text-indigo-500 mb-1">40+</p>
+                            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">Proyek Selesai</p>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 text-center hover:border-sky-500 transition-colors">
+                            <p class="text-4xl font-extrabold text-emerald-500 mb-1">25+</p>
+                            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">Klien Puas</p>
+                        </div>
+                        <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 text-center hover:border-sky-500 transition-colors">
+                            <p class="text-4xl font-extrabold text-amber-500 mb-1">15+</p>
+                            <p class="text-sm font-medium text-slate-600 dark:text-slate-400">Penghargaan / Sertifikat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-slate-50 dark:bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Title -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold text-sky-500 uppercase tracking-widest mb-2">Keahlian & Teknologi</h2>
+                    <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Teknologi yang Saya Gunakan</p>
+                    <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Skill Categories Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Frontend Skills -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="p-3 bg-sky-100 dark:bg-sky-900/50 text-sky-500 rounded-xl">
+                                <i class="fas fa-laptop-code text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-800 dark:text-white">Frontend</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1">
+                                    <span>HTML / CSS / JS</span>
+                                    <span class="text-sky-500">95%</span>
+                                </div>
+                                <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                                    <div class="bg-sky-500 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1">
+                                    <span>React.js / Next.js</span>
+                                    <span class="text-sky-500">90%</span>
+                                </div>
+                                <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                                    <div class="bg-sky-500 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1">
+                                    <span>Tailwind CSS / Vue.js</span>
+                                    <span class="text-sky-500">85%</span>
+                                </div>
+                                <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                                    <div class="bg-sky-500 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Backend Skills -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="p-3 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-500 rounded-xl">
+                                <i class="fas fa-server text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-800 dark:text-white">Backend & Database</h3>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1">
+                                    <span>Node.js / Express</span>
+                                    <span class="text-indigo-500">88%</span>
+                                </div>
+                                <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                                    <div class="bg-indigo-500 h-2 rounded-full" style="width: 88%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1">
+                                    <span>Python / Django</span>
+                                    <span class="text-indigo-500">80%</span>
+                                </div>
+                                <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                                    <div class="bg-indigo-500 h-2 rounded-full" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-sm font-medium mb-1">
+                                    <span>PostgreSQL / MongoDB</span>
+                                    <span class="text-indigo-500">85%</span>
+                                </div>
+                                <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2">
+                                    <div class="bg-indigo-500 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tools & Soft Skills -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700/50 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="p-3 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-500 rounded-xl">
+                                <i class="fas fa-wrench text-xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-800 dark:text-white">Alat & Lainnya</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Git / GitHub</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Docker</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Figma (UI/UX)</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">CI/CD</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">REST API / GraphQL</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Agile / Scrum</span>
+                            <span class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200">Problem Solving</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 bg-white dark:bg-slate-800/50 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Title -->
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <h2 class="text-xs font-bold text-sky-500 uppercase tracking-widest mb-2">Portofolio Saya</h2>
+                    <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Proyek Pilihan Terbaru</p>
+                    <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <!-- Filter Category Buttons -->
+                <div class="flex flex-wrap justify-center gap-2 mb-12" id="portfolio-filters">
+                    <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-sm font-semibold bg-sky-500 text-white shadow-md transition-all">Semua</button>
+                    <button data-filter="web" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">Aplikasi Web</button>
+                    <button data-filter="mobile" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">Mobile App</button>
+                    <button data-filter="design" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">UI/UX Design</button>
+                </div>
+
+                <!-- Project Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid">
+                    
+                    <!-- Project 1 -->
+                    <div class="project-card group rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300" data-category="web">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" 
+                                 alt="E-Commerce Dashboard" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=E-Commerce+Dashboard'">
+                            <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                                <a href="#" target="_blank" class="p-3 bg-white text-slate-900 rounded-full hover:bg-sky-500 hover:text-white transition-colors" title="Live Demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" target="_blank" class="p-3 bg-white text-slate-900 rounded-full hover:bg-sky-500 hover:text-white transition-colors" title="Source Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold text-sky-500 uppercase tracking-wider">Aplikasi Web</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1 mb-2">E-Commerce Analytics Platform</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-2">
+                                Dashboard analitik penjualan real-time dengan visualisasi grafik interaktif dan manajemen inventaris.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-0.5 rounded text-[11px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">React</span>
+                                <span class="px-2.5 py-0.5 rounded text-[11px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Node.js</span>
+                                <span class="px-2.5 py-0.5 rounded text-[11px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Tailwind</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="project-card group rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300" data-category="mobile">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Fitness Tracking App" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/600x400/6366f1/ffffff?text=Fitness+Tracker+App'">
+                            <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                                <a href="#" target="_blank" class="p-3 bg-white text-slate-900 rounded-full hover:bg-sky-500 hover:text-white transition-colors" title="Live Demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="#" target="_blank" class="p-3 bg-white text-slate-900 rounded-full hover:bg-sky-500 hover:text-white transition-colors" title="Source Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold text-indigo-500 uppercase tracking-wider">Mobile App</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1 mb-2">FitLife Health Tracker</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-2">
+                                Aplikasi pemantau kesehatan harian, hitung kalori, serta jadwal latihan kebugaran personal.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-0.5 rounded text-[11px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">React Native</span>
+                                <span class="px-2.5 py-0.5 rounded text-[11px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Firebase</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="project-card group rounded-2xl overflow-hidden bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300" data-category="design">
+                        <div class="relative overflow-hidden h-48">
+                            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80" 
+                                 alt="Travel Agency Landing Page" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                                 onerror="this.src='https://placehold.co/600x400/10b981/ffffff?text=Travel+App+Design'">
+                            <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
+                                <a href="#" target="_blank" class="p-3 bg-white text-slate-900 rounded-full hover:bg-sky-500 hover:text-white transition-colors" title="Live Demo">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs font-semibold text-emerald-500 uppercase tracking-wider">UI/UX Design</span>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1 mb-2">Wanderlust Travel Redesign</h3>
+                            <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-2">
+                                Desain antarmuka modern dan sistem desain lengkap untuk pemesanan tiket liburan global.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="px-2.5 py-0.5 rounded text-[11px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Figma</span>
+                                <span class="px-2.5 py-0.5 rounded text-[11px] font-medium bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Prototyping</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Education Timeline -->
+        <section id="experience" class="py-20 bg-slate-50 dark:bg-slate-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Title -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold text-sky-500 uppercase tracking-widest mb-2">Riwayat Jejak</h2>
+                    <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Pengalaman & Pendidikan</p>
+                    <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="max-w-4xl mx-auto relative border-l-2 border-slate-200 dark:border-slate-800 pl-6 sm:pl-8 ml-4 sm:ml-auto space-y-12">
+                    
+                    <!-- Timeline Item 1 -->
+                    <div class="relative group">
+                        <!-- Dot -->
+                        <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-5 h-5 rounded-full bg-sky-500 border-4 border-slate-50 dark:border-slate-900 group-hover:scale-125 transition-transform"></div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-300">2022 - Sekarang</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">SMPN 2 PANEKAN</h3>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3">ndeso yekkkkk</p>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Memimpin tim 6 pengembang dalam merancang aplikasi microservices skala besar, meningkatkan kecepatan respons aplikasi sebesar 40%.
+                        </p>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="relative group">
+                        <!-- Dot -->
+                        <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-5 h-5 rounded-full bg-indigo-500 border-4 border-slate-50 dark:border-slate-900 group-hover:scale-125 transition-transform"></div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-300">2021 - 2024</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">SMAN 1 Kendal Ngawi</h3>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3">PLOSOKKKK BANGETTTTTT</p>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Mengembangkan antarmuka interaktif menggunakan React.js dan Tailwind CSS untuk lebih dari 20 proyek klien global.
+                        </p>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="relative group">
+                        <!-- Dot -->
+                        <div class="absolute -left-[31px] sm:-left-[39px] top-1 w-5 h-5 rounded-full bg-emerald-500 border-4 border-slate-50 dark:border-slate-900 group-hover:scale-125 transition-transform"></div>
+                        <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-300">2024 - now</span>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-2">S1 Pendidikan Guru Sekolah Dasar</h3>
+                        <p class="text-sm font-medium text-slate-500 dark:text-slate-400 mb-3">Universitas Negeri Surabaya</p>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Lulus dengan predikat Cum Laude. Berfokus pada Rekayasa Perangkat Lunak dan Algoritma Struktur Data.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-white dark:bg-slate-800/50 transition-colors">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Title -->
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-xs font-bold text-sky-500 uppercase tracking-widest mb-2">Kontak</h2>
+                    <p class="text-3xl font-extrabold text-slate-900 dark:text-white sm:text-4xl">Mari Bekerja Sama</p>
+                    <div class="w-16 h-1 bg-sky-500 mx-auto mt-4 rounded-full"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <!-- Contact Info -->
+                    <div class="lg:col-span-5 space-y-6">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white">Punya proyek dalam pikiran?</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Saya selalu terbuka untuk mendiskusikan proyek baru, ide kreatif, atau peluang karir. Silakan hubungi saya melalui formulir ini atau info di bawah.
+                        </p>
+
+                        <div class="space-y-4 pt-4">
+                            <div class="flex items-center space-x-4">
+                                <div class="p-3 bg-sky-100 dark:bg-sky-900/50 text-sky-500 rounded-xl">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 font-medium">Email</p>
+                                    <p class="font-semibold text-slate-800 dark:text-slate-200">maratus@gmail.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-4">
+                                <div class="p-3 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-500 rounded-xl">
+                                    <i class="fas fa-location-dot text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 font-medium">Lokasi</p>
+                                    <p class="font-semibold text-slate-800 dark:text-slate-200">Ngawi, Jawa Tengah, Indonesia</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-4">
+                                <div class="p-3 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-500 rounded-xl">
+                                    <i class="fas fa-phone text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-400 font-medium">Telepon / WhatsApp</p>
+                                    <p class="font-semibold text-slate-800 dark:text-slate-200">+62 812-3456-7890</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="lg:col-span-7 bg-slate-50 dark:bg-slate-900 p-8 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm">
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Nama Lengkap *</label>
+                                    <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all text-sm" placeholder="John Doe">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Email *</label>
+                                    <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all text-sm" placeholder="john@example.com">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="subject" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Subjek</label>
+                                <input type="text" id="subject" class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all text-sm" placeholder="Diskusi Proyek Web">
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 mb-2">Pesan *</label>
+                                <textarea id="message" rows="4" required class="w-full px-4 py-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 transition-all text-sm" placeholder="Halo Alex, saya ingin mendiskusikan tentang..."></textarea>
+                            </div>
+
+                            <button type="submit" id="submit-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 hover:from-sky-600 hover:to-indigo-700 text-white font-semibold shadow-lg shadow-sky-500/25 transition-all duration-300 flex justify-center items-center space-x-2">
+                                <span>Kirim Pesan</span>
+                                <i class="fas fa-paper-plane text-sm"></i>
+                            </button>
+                        </form>
+
+                        <!-- Simulated Form Alert Message -->
+                        <div id="form-alert" class="hidden mt-4 p-4 rounded-xl text-sm font-medium"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <p class="text-sm">
+                &copy; <span id="current-year"></span> Alex Rivera. Hak Cipta Dilindungi.
+            </p>
+            <div class="flex justify-center space-x-6">
+                <a href="https://github.com" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-linkedin"></i></a>
+                <a href="https://twitter.com" target="_blank" class="hover:text-white transition-colors"><i class="fab fa-x-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" aria-label="Back to Top" class="fixed bottom-6 right-6 p-3.5 rounded-full bg-sky-500 text-white shadow-xl hover:bg-sky-600 opacity-0 pointer-events-none transition-all duration-300 z-40">
+        <i class="fas fa-arrow-up text-lg"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set dynamic current year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // 1. Dynamic Greeting Based on Time of Day
+            const greetingEl = document.getElementById('dynamic-greeting');
+            const hour = new Date().getHours();
+            if (hour < 12) {
+                greetingEl.textContent = 'Selamat Pagi ☀️';
+            } else if (hour < 15) {
+                greetingEl.textContent = 'Selamat Siang 🌤️';
+            } else if (hour < 18) {
+                greetingEl.textContent = 'Selamat Sore 🌇';
+            } else {
+                greetingEl.textContent = 'Selamat Malam 🌙';
+            }
+
+            // 2. Dark/Light Theme Toggle Logic
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            
+            // Check saved theme or system preference
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+
+            themeToggleBtn.addEventListener('click', () => {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.theme = 'light';
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.theme = 'dark';
+                }
+            });
+
+            // 3. Mobile Navigation Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                if (mobileMenu.classList.contains('hidden')) {
+                    menuIcon.classList.replace('fa-xmark', 'fa-bars');
+                } else {
+                    menuIcon.classList.replace('fa-bars', 'fa-xmark');
+                }
+            });
+
+            // Close mobile menu on link click
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.replace('fa-xmark', 'fa-bars');
+                });
+            });
+
+            // 4. Back to Top Button Visibility
+            const backToTopBtn = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 400) {
+                    backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // 5. Portfolio Filtering
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active styles from all buttons
+                    filterButtons.forEach(b => {
+                        b.classList.remove('bg-sky-500', 'text-white', 'shadow-md');
+                        b.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+                    });
+
+                    // Add active style to clicked button
+                    btn.classList.add('bg-sky-500', 'text-white', 'shadow-md');
+                    btn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300');
+
+                    const category = btn.getAttribute('data-filter');
+
+                    projectCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // 6. Resume Download Simulation
+            const resumeBtn = document.getElementById('resume-btn');
+            resumeBtn.addEventListener('click', () => {
+                // Creates a dummy text file simulation for resume download
+                const dummyResumeContent = "ALEX RIVERA - FULL STACK DEVELOPER\n\nContact: alex.rivera@example.com\nWebsite: https://alexrivera.dev\n\nSummary:\nExperienced Software Engineer with 5+ years of experience building modern web applications.";
+                const blob = new Blob([dummyResumeContent], { type: 'text/plain' });
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = url;
+                a.download = 'Alex_Rivera_CV.txt';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            });
+
+            // 7. Contact Form Simulation with Validation & Alert
+            const contactForm = document.getElementById('contact-form');
+            const formAlert = document.getElementById('form-alert');
+            const submitBtn = document.getElementById('submit-btn');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin text-sm"></i> <span>Mengirim...</span>`;
+
+                setTimeout(() => {
+                    // Success Simulation
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = `<span>Kirim Pesan</span> <i class="fas fa-paper-plane text-sm"></i>`;
+
+                    formAlert.className = "mt-4 p-4 rounded-xl text-sm font-medium bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-200 border border-emerald-200 dark:border-emerald-800";
+                    formAlert.textContent = "Terima kasih! Pesan Anda telah berhasil terkirim. Saya akan segera menghubungi Anda kembali.";
+                    formAlert.classList.remove('hidden');
+
+                    contactForm.reset();
+
+                    // Hide message after 5 seconds
+                    setTimeout(() => {
+                        formAlert.classList.add('hidden');
+                    }, 5000);
+                }, 1200);
+            });
+        });
+    </script>
+</body>
+</html>
